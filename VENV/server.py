@@ -12,7 +12,7 @@ try: #go to Mongo folder and run mongod to start a server. Afterwards, run mongo
     mongo = pymongo.MongoClient(host="localhost",
                                 port=27017, #default port for mongo
                                 serverSelectionTimeoutMS = 1000)
-    db = mongo.company #company or whatever we want, this is a database
+    db = mongo.Test_Articles #company or whatever we want, this is a database
     mongo.server_info() #will trigger the exception if it cannot connect to the DB
 
 except:
