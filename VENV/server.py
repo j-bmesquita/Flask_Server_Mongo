@@ -46,8 +46,8 @@ def get_some_users():
 def create_user():
     try:
         # user = {"name":"A", "lastName":"AA"} #the user is in json, and this data will be filled by Postman
-        user = {"name": request.form["name"],
-                "lastName": request.form["lastName"]}  # the user is in json, and this data will be filled by Postman
+        user = {"last_Name": request.form["last_Name"],
+                "first_Name": request.form["first_Name"]}  # the user is in json, and this data will be filled by Postman
 
         dbResponse = db.users.insert_one(user) #this is pointing to the company database, and we will be inserting data
         # for attr in dir(dbResponse):
@@ -72,7 +72,11 @@ def update_user(id): #<id> -> id
     try:
         dbResponse = db.users.update_one(
             {"_id":ObjectId(id)}, #here the id is an objectid
-            {"$set":{"name":request.form["name"]}}
+            {"$set":{"last_Name":request.form["last_Name"]}}
+        )
+        dbResponse = db.users.update_one(
+            {"_id": ObjectId(id)},  # here the id is an objectid
+            {"$set": {"first_Name": request.form["first_Name"]}}
         )
         # for attr in dir(dbResponse):
         #     print(f"*****{attr}*****") #check each attribute
